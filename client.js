@@ -5,10 +5,10 @@ async function graphqlRequest(query, variables = {}) {
   const response = await fetch(GRAPHQL_URL, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ query, variables }), // Aseguramos JSON válido
+    body: JSON.stringify({ query, variables }), 
   });
 
-  // Si la respuesta no es JSON, mostramos el texto para depurar
+  //Si la respuesta no es JSON, se muestra texto para depurar
   const text = await response.text();
   try {
     return JSON.parse(text);
@@ -69,10 +69,12 @@ async function createUser(name, email, age) {
   console.log("Nuevo usuario creado:", data.data.createUser);
 }
 
+
+
 //Ejemplos 
 (async () => {
   await getAllUsers();
   await getUserById("1");
-  await createUser("Carlos", "carlos@nose.com", 33);
+  await createUser("Samantha", "gugu@gmail.com", 23);
   await getAllUsers();
 })();
