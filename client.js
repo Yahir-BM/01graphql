@@ -69,6 +69,24 @@ async function createUser(name, email, age) {
   console.log("Nuevo usuario creado:", data.data.createUser);
 }
 
+//Eliminar usuario
+async function deleteUser(id) {
+  const mutation = `
+    mutation ($id: ID!) {
+      deleteUser(id: $id) {
+        id
+        name
+        email
+        age
+      }
+    }
+  `;
+  const variables = { id };
+  const data = await graphqlRequest(mutation, variables);
+  console.log("Usuario eliminado:", data.data.deleteUser);
+  
+}
+
 
 
 //Ejemplos 
@@ -76,5 +94,6 @@ async function createUser(name, email, age) {
   await getAllUsers();
   await getUserById("1");
   await createUser("Samantha", "gugu@gmail.com", 23);
+  await deleteUser("3");
   await getAllUsers();
 })();

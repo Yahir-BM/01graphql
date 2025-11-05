@@ -6,6 +6,7 @@ export const resolvers = {
         getUserById: (_, {id}) => userModel.getById(id)
     },
     Mutation: {
-        createUser: (_, {name, email, age}) => userModel.create(name, email, age)
+        createUser: (_, {name, email, age}) => userModel.create(name, email, age),
+        deleteUser: (_, { id }) => userModel.remove(id),
     }
 };

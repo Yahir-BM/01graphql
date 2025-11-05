@@ -23,3 +23,12 @@ export const create = (name, email, age) => {
     return newUser;
 }
 
+export const remove = (id) => {
+    const index = users.findIndex((user) => user.id === id);
+    if (index === -1) return null;
+    const deleted = users.splice(index, 1)[0];
+    return deleted;
+}
+
+
+
